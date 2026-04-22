@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: My Site
+title: kTailor.dev
 
 # import hextra as module
 module:
@@ -18,29 +18,32 @@ markup:
 
 menu:
   main:
+    - name: About
+      pageRef: /
+      weight: 1
     - name: Docs
       pageRef: /docs
-      weight: 1
-    - name: About
-      pageRef: /about
       weight: 2
-    - name: Contact ↗
-      url: "https://github.com/imfing"
+    - name: Download
+      pageRef: /download
       weight: 3
-    - name: Search
+    - name: Contact ↗
+      url: "https://www.katalytic-it.com"
       weight: 4
+    - name: Search
+      weight: 5
       params:
         type: search
     - name: GitHub
-      weight: 5
-      url: "https://github.com/imfing/hextra-starter-template"
+      weight: 6
+      url: "https://github.com/katalyticIT/kTailor"
       params:
         icon: github
-    - name: Twitter
-      weight: 6
-      url: "https://twitter.com/"
-      params:
-        icon: x-twitter
+#    - name: Twitter
+#      weight: 7
+#      url: "https://twitter.com/"
+#      params:
+#        icon: x-twitter
 
 params:
   navbar:
