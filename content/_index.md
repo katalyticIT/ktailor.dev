@@ -13,6 +13,17 @@ YAML templates stored in ConfigMaps, it effortlessly injects sidecars,
 environment variables, or volumes *without* requiring changes to the original
 source manifests.
 
+## What can I use it for?
+
+It's for modifying deployments where you cannot or may not modify the deployment
+itself or its parts: the code, the image, the helm chart.
+
+It's useful if
+* you've got a third-party application which you cannot modify,
+* you need to inject a sidecar for internal monitoring,
+* you want to use an initContainer to inject a library, e.g. for time travel,
+* you want to overwrite an environment variable, e.g. $http_proxy or $CLASSPATH.
+
 ## How does it work - in short?
 
 All your deployment needs is a special label which triggers kTailor to
@@ -57,6 +68,9 @@ Just an own namespace and a bit of memory for a couple of kTailor pods.
 kTailor uses *no database*, reducing latency and dependencies, thus making
 it *reliable and real fast*. The templates are stored in plain configmaps,
 making it easy to make them part of your CICD process.
+
+*No CRD* are to be defined. kTailor works with plain configMaps, reducing
+the learning curve.
 
 
 ## Explore
