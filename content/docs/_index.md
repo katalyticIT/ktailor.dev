@@ -1,18 +1,13 @@
 ---
 title: Documentation
-next: first-page
+next: prerequisites
 ---
 
-This is a demo of the theme's documentation layout.
+Documentation about kTailor.
 
-## Hello, World!
+* [Prerequitites](prerequisites/)
+* [Installation](installation/)
+* [Templates](templates/)
+* [Triggering the webhook](triggering/)
 
-```go {filename="main.go"}
-package main
 
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, World!")
-}
-```
