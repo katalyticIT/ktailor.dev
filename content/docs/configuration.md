@@ -18,15 +18,15 @@ Depending on the nature of your cluster you may want users to be able to write t
 in development clusters. Or you want all templates to be controlled and managed by the admins. To address
 your security concerns kTailor offers the following settings for the variable `allowCustomTemplates`:
 
-* `allowCustomTemplates: true`: Allows users to use "local" templates stored as configmap in their own namespaces. *High flexibility.*
-* `allowCustomTemplates: false`: Only "central" templates (managed by admins) are allowed. *Higher security.*
+* `allowCustomTemplates: true`: Allows users to use "local" templates stored as configmap in their own namespaces. >>>> *High flexibility.*
+* `allowCustomTemplates: false`: Only "central" templates (managed by admins) are allowed. >>>> *Higher security.*
 
 ## Namespace Control
 You can control which namespaces are processed by the webhook.
 
 ### Internal Forbidden List
 
-The following namespaces are managed in an internal list and are *always blocked*:
+The following namespaces are managed in an internal list and are *always blocked*. This list is hardcoded and cannot be altered by configuration.
 * `kube-system`
 * `kube-node-lease`
 * `kube-public`
@@ -34,12 +34,13 @@ The following namespaces are managed in an internal list and are *always blocked
 * and the ktailor namespace itself
 
 ### Mode
-Define here if you want to allow or deny modifications in the listed namespaces.
+Define here if you want to allow or deny modifications in your list of namespaces.
 
-* `blocklist`: All namespaces are allowed to be modified except those in the list.
+* `blocklist`: All namespaces are allowed to be modified except those in the list. *(Default)*
 * `allowlist`: Only namespaces in the list are allowed to be modified.
 
 ### Custom Lists
+
 Define the namespaces that you want be allowed or denied (depending
 on `mode`) in lists under `namespaces.match`.*matchType*. Regex
 expressions or similar are not supported. To keep the code simple and robust
@@ -48,7 +49,7 @@ following three *matchTypes*:
 
 * `exact` - must match the given name exactly
 * `startsWith` - must start with one of the listed entries; useful e.g. if you're applying a name convention like `dev-`, `qa-` or `prod-`.
-* `endsWith` - must end with one of the listed strings; useful 
+* `endsWith` - must end with one of the listed strings; useful if you're using suffixes like `-tmp` or `-test`.
 
 
 ## Example: Configuration Snippet

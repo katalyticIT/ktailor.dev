@@ -5,7 +5,7 @@ pre: "/configuration/"
 next: "/templates/modifycontainers/"
 ---
 
-Templates are the heart of kTailor. They are stored as Kubernetes `ConfigMaps` with the label `ktailor.io/template: "true"`.
+Templates are the heart of kTailor. They are stored as Kubernetes `ConfigMaps` with the label `ktailor.dev/template: "true"`.
 
 ## Scope: Central vs. Local
 * **Central**: The webhook looks for the ConfigMap in its own namespace (usually `ktailor`). These are globally managed.

@@ -13,6 +13,12 @@ YAML templates stored in ConfigMaps, it effortlessly injects sidecars,
 environment variables, or volumes *without* requiring changes to the original
 source manifests.
 
+kTailor acts like a tailor: the Docker image remains unchanged, but gets
+a new look when the webhook tailors a new bespoke suit for it, thereby
+altering the resulting container’s appearance.
+
+![ktailor image](img/kTailor_made_suit_640x381.jpg)
+
 ## Why kTailor?
 
 In modern Kubernetes environments, developers often need to inject standard infrastructure components (like monitoring sidecars, proxy configurations, or specific environment variables) into their applications. Instead of cluttering every single Deployment manifest, kTailor centralizes these modifications.
@@ -32,7 +38,7 @@ It's useful if
 * you've got a third-party application which you cannot modify,
 * you need to inject a sidecar for internal monitoring,
 * you want to use an initContainer to inject a library, e.g. for time travel,
-* you want to overwrite an environment variable, e.g. $http_proxy or $CLASSPATH.
+* you want to change an environment variable, e.g. $http_proxy or $CLASSPATH.
 
 ## When NOT to use kTailor
 
@@ -50,7 +56,9 @@ modify it according to the specified template - which is simply stored
 in a configmap in your applications namespace or kTailors own namespace.
 
 If you know how to write a deployment, then you know how to write a kTailor
-template. *No specific programming language, no steep learning curve. Just YAML.*
+template.
+
+*No specific programming language, no steep learning curve. Just YAML.*
 
 ## Do you have a simple example?
 
@@ -64,7 +72,7 @@ kind: ConfigMap
 metadata:
   name: set-http-proxy
   labels:
-    ktailor.io/template: "true"
+    ktailor.dev/template: "true"
 data:
   template: |
     ---
@@ -75,10 +83,22 @@ data:
             value: http://yourProxy-ip:port/
 ```
 
+The webhook gets triggered by a label in the deployments metadata:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-example
+  labels:
+    ktailor.dev/fit: "central.set-http-proxy"
+...
+```
+
 The kTailor webhook transparently inserts (or overwrites) the environment variable
 and the binary in the pod will then use the proxy for HTTP connections.
 
-Easy, quick, done.
+*Easy, quick, done.*
 
 ## What does it need to run kTailor?
 
@@ -88,9 +108,14 @@ kTailor uses *no database*, reducing latency and dependencies, thus making
 it *reliable and real fast*. The templates are stored in plain configmaps,
 making it easy to make them part of your CICD process.
 
-*No CRD* are to be defined. kTailor works with plain configMaps, reducing
+*No CRDs are to be defined:* kTailor works with plain ConfigMaps, reducing
 the learning curve.
 
+## Is there a demo available?
+
+You can try it for free at [killercoda.com](https://killercoda.com/ktailor-demo),
+it's just a mouse-click away. The scenario spawns a small one-node kubernetes
+cluster and installs the webhook along with two small demo applications.
 
 ## Explore
 
