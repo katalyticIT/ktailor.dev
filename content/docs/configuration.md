@@ -52,11 +52,20 @@ following three *matchTypes*:
 * `endsWith` - must end with one of the listed strings; useful if you're using suffixes like `-tmp` or `-test`.
 
 
-## Example: Configuration Snippet
+## Example configuration
 
 ```yaml
+transport:
+  port: 8443
+  secure: true
+  cert: /etc/ktailor/certs/tls.crt
+  key: /etc/ktailor/certs/tls.key
+logging:
+  level: INFO
+templates:
+  allowCustomTemplates: true
 namespaces:
-  mode: blocklist
+  mode: allowlist
   match:
     startsWith: ["dev-", "test-"]
     exact: ["legacy-apps"]

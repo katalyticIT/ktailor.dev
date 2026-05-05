@@ -29,3 +29,16 @@ metadata:
 spec:
   ...
 ```
+
+## Manual triggering
+
+You can trigger the webhook at any time to redeploy the deployment while
+being modified according to the template specified. You just have to add
+the label on the command line, e.g.:
+
+```
+kubectl label --overwrite deployment my-deployment ktailor.dev/fit="central.my-template"
+```
+
+This line adds the label to the deployment which triggers the webhook. If the template
+leads to any changes in the deployment description, then new pods are spawned.
