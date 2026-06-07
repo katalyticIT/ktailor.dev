@@ -27,10 +27,10 @@ You can control which namespaces are processed by the webhook.
 ### Internal Forbidden List
 
 The following namespaces are managed in an internal list and are *always blocked*. This list is hardcoded and cannot be altered by configuration.
-* `kube-system`
-* `kube-node-lease`
-* `kube-public`
-* `cert-manager`
+* `kube-*` (internal kubernetes namespaces)
+* `openshift-*` (RedHat OpenShift namespaces)
+* `cattle-system` (Used by Rancher)
+* `cert-manager` (Used by Rancher and kTailor)
 * and the ktailor namespace itself
 
 ### Mode
