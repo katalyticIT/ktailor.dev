@@ -31,7 +31,7 @@ The following namespaces are managed in an internal list and are *always blocked
 * `openshift-*` (RedHat OpenShift namespaces)
 * `cattle-system` (Used by Rancher)
 * `cert-manager` (Used by Rancher and kTailor)
-* and the ktailor namespace itself
+* and the kTailor namespace itself
 
 ### Mode
 Define here if you want to allow or deny modifications in your list of namespaces.
