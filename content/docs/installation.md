@@ -9,7 +9,13 @@ next: configuration.md
 
 If you like to build your own kTailor image, then you can do so using the provided `Makefile`.
 
-1. **Build and Push**:
+1. **Clone the repository and change the path into it:**
+   ```bash
+   git clone https://github.com/katalyticIT/kTailor.git
+   cd kTailor
+   ```
+
+2. **Build and Push**:
    Set your registry and repository variables.
    ```bash
    export IMAGE_RGST=my-registry.io
@@ -17,7 +23,7 @@ If you like to build your own kTailor image, then you can do so using the provid
    make docker-build docker-push
    ```
 
-2. **Deploy**:
+3. **Deploy**:
    This applies RBAC, certificates, and the webhook deployment.
    ```bash
    make deploy
