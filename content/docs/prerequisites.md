@@ -9,7 +9,7 @@ next: installation.md
 To run **kTailor**, your environment must meet the following requirements:
 
 1. **Kubernetes Cluster**: A running cluster (v1.19+ recommended).
-2. **cert-manager** (or similar): Installed in the cluster to manage TLS certificates for the webhook.
+2. **cert-manager** (or similar): Installed in the cluster to manage TLS certificates for the webhook. (Find installation guides [here](https://cert-manager.io/docs/installation/).)
 3. **Build Tools**:if you want to build the image from scratch, you need the following tools.
    - **Go**: v1.21+ (if building from source).
    - **Docker**: For container image creation.
